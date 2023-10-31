@@ -1,0 +1,107 @@
+echo "Gargi Dalvi"
+echo "Roll No.I3130"
+echo "Create an Address Book"
+read fname
+touch $fname
+echo -e "Employee Name \t\t Employee Id \t\t Date of Birth \t\t Employee
+Gender \t\t Employee Age \t\t Employee Salary \n" > $fname
+ch=0
+while [ $ch -le '6' ]
+do
+echo -e "1.Insert a record \n 2.View a record \n 3.Delete a record
+\n 4.Modify a record\n 5.Search a record \n 6.Exit\n"
+echo "Enter your choice"
+read ch
+case $ch in
+
+1)
+echo -e "Enter how many records you want to insert\t"
+read n
+for ((i=0;i<$n;i++))
+do
+echo -e "Enter name of the Employee "
+read Ename
+echo -e "Enter the Employee Id"
+read Eid
+echo -e "Enter the date of birth of Employee"
+read Edob
+echo -e "Enter the gender of Employee"
+read Egender
+echo -e "Enter the age of Employee"
+
+read Eage
+echo -e "Enter the salary of Employee"
+read Esalary
+done
+echo -e " $Ename\t\t $Eid\t\t $Edob\t\t $Egender\t\t
+
+$Eage\t\t $Esalary\t\t \n">>$fname
+
+;;
+2)
+cat $fname
+;;
+3)
+echo -e "Enter Employee Id you want to delete "
+read Eid
+if grep -w $Eid $fname
+then
+grep -wv $Eid $fname >>temp
+rm $fname
+mv temp $fname
+echo "Employee record deleted"
+else
+echo "Record not found"
+fi
+;;
+4)
+echo -e "Enter Employee Id you want to modify "
+read Eid
+if grep -w $Eid $fname
+then
+grep -wv $Eid $fname >>temp
+rm $fname
+mv temp $fname
+echo -e "Enter name of the Employee "
+read Ename
+echo -e "Enter the Employee Id"
+read Eid
+echo -e "Enter the date of birth of Employee"
+
+read Edob
+echo -e "Enter the gender of Employee"
+read Egender
+echo -e "Enter the age of Employee"
+read Eage
+echo -e "Enter the salary of Employee"
+read Esalary
+echo -e " $Ename\t\t $Eid\t\t $Edob\t\t $Egender\t\t
+
+$Eage\t\t $Esalary\t\t \n">>$fname
+
+else
+echo "Record not found"
+fi
+;;
+5)
+echo -e "Enter Employee Id you want to search "
+read Eid
+if grep -w $Eid $fname
+then
+echo "Record Found"
+else
+echo "Record not found"
+fi
+;;
+6)
+exit
+;;
+esac
+done
+
+\* bash Assignment1.sh
+Gargi Dalvi
+Roll No.I3130
+Create an Address Book
+Gargi
+1.Insert a record
